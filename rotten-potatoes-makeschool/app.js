@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride = require('method-override')
 const app = express()
 var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
@@ -15,6 +16,8 @@ let reviews = [
   { title: "Great Review" },
   { title: "Next Review" }
 ]
+
+app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true}));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -49,6 +52,22 @@ app.get('/reviews/:id', (req, res) => {
   }).catch((err) => {
     console.log(err.message);
   })
+})
+
+app.get('/reviews/:id/edit', function (req, res) {
+  Review.findById(req.params.id, function(err, review) {
+    res.render('review-edit' , { review: review });
+  })
+})
+
+app.put('/reviews/:id', (req, res) => {
+  Review.findByIdAndUpdate(req.params.id, req.body)
+    .then(review => {
+      res.redirect(`/reviews/${review._id}`)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
 })
 
 app.listen(3000, () => {

@@ -1,26 +1,5 @@
 <form method="POST" action="/reviews">
-  <fieldset>
-    <legend>New Review</legend>
-    <!-- Title -->
-    <p>
-      <lable for="review-title">Title</lable>
-      <input id="review-title" type="text" name="title" />
-    </p>
-
-    <!-- Movie title  -->
-    <p>
-      <lable for="movie-title">Movie Title</lable>
-      <input id="movie-title" type="text" name="movieTitle" />
-    </p>
-
-    <!-- Description -->
-    <p>
-      <lable for="description-title">Description</lable>
-      <input id="description-title" type="text" name="description" />
-    </p>
-
-  </fieldset>
-
+{{> review-form}}
 <!-- Button -->
   <p>
     <button type="submit">Save Review</button>
