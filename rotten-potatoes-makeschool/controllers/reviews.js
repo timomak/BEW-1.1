@@ -1,6 +1,4 @@
-const Review = require('./models/review')
-
-export default function (app) {
+module.exports = function (app, Review) {
 
   app.get('/', (req, res) => {
     Review.find()

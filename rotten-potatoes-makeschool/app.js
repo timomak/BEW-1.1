@@ -80,6 +80,9 @@ app.delete('/reviews/:id', function(req, res) {
   })
 })
 
+var routes = require('./controllers/reviews');
+routes(app, Review);
+
 app.listen(3000, () => {
   console.log('App listenning om port 3k!')
 })
