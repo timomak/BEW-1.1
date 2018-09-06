@@ -1,3 +1,4 @@
+// const reviewsFile = require('./reviews-controller');
 const express = require('express')
 const methodOverride = require('method-override')
 const app = express()
@@ -68,6 +69,15 @@ app.put('/reviews/:id', (req, res) => {
     .catch(err => {
       console.log(err.message)
     })
+})
+
+app.delete('/reviews/:id', function(req, res) {
+  console.log("Delete review")
+  Review.findByIdAndRemove(req.params.id).then((review) => {
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
 })
 
 app.listen(3000, () => {
