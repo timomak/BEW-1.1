@@ -6,9 +6,17 @@ var http = require('http');
 
 
 app.get('/', function (req, res) {
-  giphy.search(req.query.term, function (err, response) {
-    res.render('home', {gifs: response.data})
-  });
+  console.log(req.query.term)
+  if (req.query.term === undefined) {
+    giphy.search("/", function (err, response) {
+      res.render('home', {gifs: response.data})
+    });
+  }
+  else {
+    giphy.search(req.query.term, function (err, response) {
+      res.render('home', {gifs: response.data})
+    });
+  }
 });
 
 app.get('/hello-world', function (req,res){
