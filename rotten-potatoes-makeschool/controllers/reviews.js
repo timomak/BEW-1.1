@@ -1,17 +1,17 @@
 module.exports = function (app, Review) {
-  let reviews = [
-    { title: "Great Review" },
-    { title: "Next Review" }
-  ]
+  // let reviews = [
+  //   { title: "Great Review" },
+  //   { title: "Next Review" }
+  // ]
 
-  app.get('/', (req,res) => {
+  app.get('/', (req, res) => {
     Review.find()
-    .then(reveiws => {
-      res.render('reviews-index', {reviews: reviews});
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(reviews => {
+        res.render('reviews-index', { reviews: reviews });
+      })
+      .catch(err => {
+        console.log(err);
+      })
   })
   app.post('/reviews', (req, res) => {
     Review.create(req.body).then((review) => {
