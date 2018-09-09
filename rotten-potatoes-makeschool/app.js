@@ -21,6 +21,8 @@ app.set('view engine', 'handlebars');
 var routes = require('./controllers/reviews');
 routes(app, Review);
 
+
+
 app.listen(3000, () => {
   console.log('App listenning om port 3k!')
 })
