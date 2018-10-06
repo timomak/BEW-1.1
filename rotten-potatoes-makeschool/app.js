@@ -5,8 +5,7 @@ const app = express()
 var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-mongoose.connect('mongodb://localhost/rotten-potatoes-makeschool', { useNewUrlParser: true });
-var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/rotten-potatoes-makeschool', { useNewUrlParser: true });
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes-makeschool');
 
 const Review = mongoose.model('Review', {
